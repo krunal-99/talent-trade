@@ -12,7 +12,6 @@
 }
 
 body {
-  /* background-color: aqua; */
   font-family: "Montserrat", serif;
 }
 
@@ -35,10 +34,6 @@ body {
   width: 1400px;
   justify-content: space-between;
   padding: 20px 0px;
-  background: url("../../../public/images/bg-hero5.webp");
-  height: 90vh;
-  background-position: center;
-  background-size: cover;
 }
 
 .nav-logo span {
@@ -53,8 +48,7 @@ body {
 }
 
 .nav-links {
-  /* align-items: center; */
-  margin-top: 10px;
+  align-items: center;
   gap: 24px;
   font-weight: 500;
   cursor: pointer;
@@ -76,7 +70,7 @@ body {
 }
 
 .user {
-  /* align-items: center; */
+  align-items: center;
   gap: 10px;
   cursor: pointer;
   position: relative;

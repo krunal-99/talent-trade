@@ -65,7 +65,7 @@ const Navbar = () => {
             {!currentUser && <button>Join</button>}
             {currentUser && (
               <div className="user flex" onClick={() => setOpen(!open)}>
-                <img src="./images/IMG_0501-02-01.jpeg" alt="" />
+                <img src="./public/images/IMG_0501-02-01.jpeg" alt="" />
                 <span>{currentUser?.username}</span>
                 {open && (
                   <div className="options flex">
