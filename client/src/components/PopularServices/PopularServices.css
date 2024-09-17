@@ -1,0 +1,101 @@
+.popular_services {
+  display: flex;
+  flex-direction: column;
+  max-width: 1400px;
+  margin: 100px auto;
+  padding: 0 20px;
+}
+
+.popular_heading {
+  font-size: 42px;
+  line-height: 48px;
+  margin-bottom: 30px;
+  color: #404145;
+  font-weight: bold;
+}
+
+.popular_list {
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  gap: 48px;
+  justify-content: center;
+}
+
+.popular_element {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.popular_element:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.popular_card {
+  position: absolute;
+  z-index: 10;
+  color: white;
+  left: 20px;
+  top: 20px;
+  padding: 10px;
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+}
+
+.popular_card span {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #f5f5f5;
+}
+
+.popular_card h6 {
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 28px;
+  color: #ffffff;
+}
+
+.popular_image {
+  border-radius: 20px;
+  height: 350px;
+  width: 300px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.popular_image img {
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.4s ease-in-out;
+}
+
+.popular_element:hover .popular_image img {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .popular_list {
+    gap: 24px;
+  }
+
+  .popular_element {
+    width: 100%;
+  }
+
+  .popular_image {
+    width: 100%;
+    height: auto;
+  }
+}
