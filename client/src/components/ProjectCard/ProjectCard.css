@@ -1,0 +1,97 @@
+.popular_projects_section {
+  max-width: 1400px;
+  margin: 100px auto;
+  padding: 0 20px;
+}
+
+.popular_projects_heading {
+  font-size: 42px;
+  line-height: 48px;
+  margin-bottom: 30px;
+  color: #404145;
+  font-weight: bold;
+}
+
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+}
+
+.project_card {
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.project_card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.project_image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.project_info {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+}
+
+.profile_image img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile_details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.project_name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #8e44ad;
+  margin-bottom: 5px;
+  transition: color 0.3s ease;
+}
+
+.username {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2c3e50;
+  transition: color 0.3s ease;
+  margin-bottom: 5px;
+}
+
+.category {
+  font-size: 12px;
+  color: #777;
+}
+
+@media (max-width: 768px) {
+  .projects {
+    gap: 24px;
+  }
+
+  .project_card {
+    width: 100%;
+  }
+
+  .project_image img {
+    height: auto;
+  }
+}
