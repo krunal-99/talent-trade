@@ -4,10 +4,11 @@ import "./Navbar.css";
 const Navbar = () => {
   const [active, setActive] = useState(false);
   const [open, setOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const { pathname } = useLocation();
 
   const isActive = () => {
-    window.scrollY > 0 ? setActive(true) : setActive(false);
+    window.scrollY > 600 ? setActive(true) : setActive(false);
   };
 
   useEffect(() => {
@@ -30,7 +31,7 @@ const Navbar = () => {
           active || pathname !== "/" ? "navbar active flex" : "navbar flex"
         }
       >
-        <div className="container flex">
+        <div className="nav_container flex">
           <div className="nav-logo flex">
             <div className="logo-img">
               <Link to="/" className="link">
@@ -49,7 +50,10 @@ const Navbar = () => {
               </Link>
             </div>
           </div>
-          <div className="nav-links flex">
+          <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+            ☰
+          </div>
+          <div className={`nav-links flex ${menuOpen ? "open" : ""}`}>
             <Link to="/" className="link">
               Home
             </Link>
@@ -94,40 +98,6 @@ const Navbar = () => {
             )}
           </div>
         </div>
-        {(active || pathname !== "/") && (
-          <>
-            <hr />
-            <div className="menu flex">
-              <Link className="link" to="/">
-                Graphics & Design
-              </Link>
-              <Link className="link" to="/">
-                Video & Animation
-              </Link>
-              <Link className="link" to="/">
-                Writing & Translation
-              </Link>
-              <Link className="link" to="/">
-                AI Services
-              </Link>
-              <Link className="link" to="/">
-                Digital Marketing
-              </Link>
-              <Link className="link" to="/">
-                Music & Audio
-              </Link>
-              <Link className="link" to="/">
-                Programming & Tech
-              </Link>
-              <Link className="link" to="/">
-                Business
-              </Link>
-              <Link className="link" to="/">
-                Lifestyle
-              </Link>
-            </div>
-          </>
-        )}
       </div>
     </>
   );

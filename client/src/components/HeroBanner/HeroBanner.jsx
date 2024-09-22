@@ -3,7 +3,7 @@ import "./HeroBanner.css";
 const HeroBanner = () => {
   return (
     <div className="banner">
-      <div className="container">
+      <div className="hero_container">
         <div className="left">
           <h1>
             Find the perfect <i>freelance</i> services for your business
