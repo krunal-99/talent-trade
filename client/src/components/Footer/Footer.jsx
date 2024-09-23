@@ -17,7 +17,7 @@ const Footer = () => {
             <span>Data</span>
             <span>Business</span>
             <span>Personal Growth & Hobbies</span>
-            <span>Phptpgraphy</span>
+            <span>Photography</span>
             <span>Finance</span>
             <span>End-to-End Projects</span>
             <span>Sitemap</span>

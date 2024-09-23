@@ -28,7 +28,9 @@ const Navbar = () => {
     <>
       <div
         className={
-          active || pathname !== "/" ? "navbar active flex" : "navbar flex"
+          active || pathname !== "/"
+            ? "navbar active bg-white flex"
+            : "navbar flex"
         }
       >
         <div className="nav_container flex">
@@ -46,14 +48,20 @@ const Navbar = () => {
             </div>
             <div>
               <Link to="/" className="link">
-                <span>TalentTrade</span>
+                <span className="talenttrade">TalentTrade</span>
               </Link>
             </div>
           </div>
           <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
             ☰
           </div>
-          <div className={`nav-links flex ${menuOpen ? "open" : ""}`}>
+          <div
+            className={
+              active
+                ? `nav-links active  flex ${menuOpen ? "open" : ""}`
+                : `nav-links flex ${menuOpen ? "open" : ""}`
+            }
+          >
             <Link to="/" className="link">
               Home
             </Link>
@@ -70,7 +78,7 @@ const Navbar = () => {
             {currentUser && (
               <div className="user flex" onClick={() => setOpen(!open)}>
                 <img src="./public/images/IMG_0501-02-01.jpeg" alt="" />
-                <span>{currentUser?.username}</span>
+                <span className="link">{currentUser?.username}</span>
                 {open && (
                   <div className="options flex">
                     {currentUser?.isFreelancer && (

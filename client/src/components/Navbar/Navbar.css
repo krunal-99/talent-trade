@@ -33,8 +33,11 @@ body {
 }
 
 .active {
-  background-color: white;
   color: black;
+}
+
+.bg-white {
+  background-color: white;
 }
 
 .navbar .nav_container {
@@ -62,6 +65,7 @@ body {
   font-weight: 500;
   cursor: pointer;
   transition: max-height 0.3s ease;
+  padding-right: 20px;
 }
 
 .nav-links button {
@@ -112,7 +116,7 @@ body {
   font-weight: 300;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1075px) {
   .nav_container {
     width: 100%;
     padding: 10px;
@@ -122,6 +126,9 @@ body {
   }
   .nav-logo {
     margin-bottom: 10px;
+  }
+  .right img {
+    max-width: auto;
   }
 }
 
@@ -155,13 +162,8 @@ body {
     padding: 10px;
     background-color: #013914;
   }
-
-  .active {
+  .nav-links.active {
     background-color: white;
-  }
-
-  .nav-links .link {
-    color: white;
   }
   .nav-links.open {
     max-height: 400px;
@@ -173,13 +175,24 @@ body {
 
   .nav-links a,
   .nav-links button {
-    color: black;
+    color: white;
     text-align: center;
     padding: 10px 0;
+  }
+
+  .navbar.active .nav-links a,
+  .navbar.active .nav-links button {
+    color: black;
   }
 
   .options {
     width: 100%;
     right: auto;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .talenttrade {
+    display: none;
   }
 }

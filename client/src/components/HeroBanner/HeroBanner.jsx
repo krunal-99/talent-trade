@@ -11,7 +11,7 @@ const HeroBanner = () => {
           <div className="search">
             <div className="searchInput">
               <img src="./images/search.png" alt="Search Icon" />
-              <input type="text" placeholder="Try building Web Applications" />
+              <input type="text" placeholder="Try building Websites" />
             </div>
             <button>Search</button>
           </div>

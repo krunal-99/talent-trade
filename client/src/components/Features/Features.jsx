@@ -5,7 +5,7 @@ const Features = () => {
     <div className="features">
       <div className="features_container">
         <div className="feature_img">
-          <img src="./images/feature.png" alt="" width={600} />
+          <img src="./images/feature.png" alt="" />
         </div>
         <div className="feature_content">
           <h1>A whole world of freelance talent at your fingertips.</h1>
@@ -15,7 +15,7 @@ const Features = () => {
           </div>
           <p>
             Find high-quality services at every price point. No hourly rates,
-            just project-based pricing
+            just project-based pricing.
           </p>
           <div className="title">
             <img src="./images/check.png" alt="" />
@@ -23,7 +23,7 @@ const Features = () => {
           </div>
           <p>
             Find the right freelancer to begin working on your project within
-            minutes
+            minutes.
           </p>
           <div className="title">
             <img src="./images/check.png" alt="" />

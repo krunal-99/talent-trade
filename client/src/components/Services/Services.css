@@ -1,14 +1,14 @@
 .services-container {
-  margin: 4rem 5rem;
+  margin: 80px 5%;
   background: linear-gradient(to right, #f9f9f9, #f1f1f1);
-  padding: 2rem;
+  padding: 40px;
   border-radius: 15px;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .services-heading {
-  font-size: 2.5rem;
-  margin-bottom: 2.5rem;
+  font-size: 40px;
+  margin-bottom: 40px;
   color: #2c3e50;
   font-weight: bold;
   text-align: center;
@@ -21,14 +21,14 @@
   width: 80px;
   height: 4px;
   background-color: #1dbf73;
-  margin: 1rem auto 0;
+  margin: 16px auto 0;
   border-radius: 2px;
 }
 
 .services-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 2.5rem;
+  gap: 40px;
   list-style-type: none;
   padding: 0;
 }
@@ -39,7 +39,7 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  padding: 2rem;
+  padding: 32px;
   background-color: white;
   border-radius: 15px;
   border: 2px solid transparent;
@@ -67,12 +67,12 @@
 .service-image {
   width: 60px;
   height: 60px;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
   transition: transform 0.3s ease-in-out;
 }
 
 .service-name {
-  font-size: 1.1rem;
+  font-size: 16px;
   color: #404145;
   transition: color 0.3s ease;
 }
@@ -96,18 +96,19 @@
   animation: fadeIn 1s ease;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1150px) {
   .services-container {
-    margin: 4rem 3%;
+    margin: 80px 3%;
+    padding: 32px;
   }
 
   .services-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    gap: 32px;
   }
 
   .service-item {
-    padding: 1.5rem;
+    padding: 24px;
   }
 
   .service-image {
@@ -126,49 +127,50 @@
 
 @media (max-width: 768px) {
   .services-container {
-    margin: 3rem 2%;
+    margin: 60px 2%;
+    padding: 24px;
   }
 
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    gap: 24px;
   }
 
   .service-item {
-    padding: 1rem;
+    padding: 16px;
   }
 
   .service-image {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
   }
 
   .service-name {
-    font-size: 0.9rem;
+    font-size: 13px;
   }
 
   .services-heading {
-    font-size: 1.8rem;
+    font-size: 28px;
   }
 }
 
 @media (max-width: 480px) {
   .services-container {
-    margin: 2rem 1rem;
-    padding: 1rem;
+    margin: 40px 1%;
+    padding: 16px;
   }
 
   .services-heading {
-    font-size: 1.5rem;
+    font-size: 24px;
   }
 
   .services-grid {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 16px;
   }
 
   .service-item {
-    padding: 0.8rem;
+    padding: 12px;
   }
 
   .service-image {
@@ -177,6 +179,6 @@
   }
 
   .service-name {
-    font-size: 0.8rem;
+    font-size: 12px;
   }
 }

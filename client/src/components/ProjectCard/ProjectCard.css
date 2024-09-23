@@ -82,6 +82,12 @@
   color: #777;
 }
 
+@media (max-width: 1150px) {
+  .popular_projects_heading {
+    text-align: center;
+  }
+}
+
 @media (max-width: 768px) {
   .projects {
     gap: 24px;
