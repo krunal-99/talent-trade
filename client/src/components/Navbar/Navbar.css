@@ -116,6 +116,11 @@ body {
   font-weight: 300;
 }
 
+.others {
+  color: black;
+  background-color: white;
+}
+
 @media screen and (max-width: 1075px) {
   .nav_container {
     width: 100%;
