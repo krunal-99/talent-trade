@@ -23,8 +23,8 @@ const Gigs = () => {
         <div className="menu">
           <div className="left">
             <span>Budget</span>
-            <input type="text" placeholder="min" />
-            <input type="text" placeholder="max" />
+            <input type="number" placeholder="min" />
+            <input type="number" placeholder="max" />
             <button>Apply</button>
           </div>
           <div className="right">
