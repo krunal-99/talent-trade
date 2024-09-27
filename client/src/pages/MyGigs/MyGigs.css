@@ -1,0 +1,163 @@
+.myGigs {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #f3f4f6 25%, #ffffff 75%);
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.myGigs_container {
+  width: 90%;
+  max-width: 1200px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  overflow-x: auto;
+}
+
+.myGigs_title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.myGigs_title h1 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.myGigs_title button {
+  background: linear-gradient(135deg, #1dbf73, #17a66a);
+  color: white;
+  font-weight: 600;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.myGigs_title button:hover {
+  background: #17a66a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  font-size: 16px;
+}
+
+th {
+  background-color: #f8f8f8;
+  color: #555;
+}
+
+tr {
+  border-bottom: 1px solid #f1f1f1;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+td img.gig-img {
+  width: 60px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+td img.delete {
+  width: 24px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+td img.delete:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 4px rgba(255, 0, 0, 0.5));
+}
+
+@media (max-width: 768px) {
+  .myGigs_container {
+    padding: 20px;
+  }
+
+  .myGigs_title {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .myGigs_title h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .myGigs_title button {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  th,
+  td {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  td img.gig-img {
+    width: 50px;
+    height: 30px;
+  }
+
+  td img.delete {
+    width: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .myGigs_title h1 {
+    font-size: 1.3rem;
+  }
+
+  .myGigs_title button {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  th,
+  td {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  td img.gig-img {
+    width: 40px;
+    height: 25px;
+  }
+
+  td img.delete {
+    width: 18px;
+  }
+}

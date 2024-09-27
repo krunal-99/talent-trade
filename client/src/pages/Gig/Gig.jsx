@@ -173,5 +173,4 @@ const Gig = () => {
     </div>
   );
 };
-
 export default Gig;
