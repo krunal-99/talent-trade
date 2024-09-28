@@ -2,20 +2,20 @@ import React from "react";
 import "./HeroBanner.css";
 const HeroBanner = () => {
   return (
-    <div className="banner">
+    <div className="hero_banner">
       <div className="hero_container">
-        <div className="left">
+        <div className="hero_left">
           <h1>
             Find the perfect <i>freelance</i> services for your business
           </h1>
-          <div className="search">
-            <div className="searchInput">
+          <div className="hero_search">
+            <div className="hero_searchInput">
               <img src="./images/search.png" alt="Search Icon" />
               <input type="text" placeholder="Try building Websites" />
             </div>
             <button>Search</button>
           </div>
-          <div className="popular">
+          <div className="hero_popular">
             <span>Popular:</span>
             <button>Web Development</button>
             <button>App Development</button>
@@ -23,7 +23,7 @@ const HeroBanner = () => {
             <button>AI Services</button>
           </div>
         </div>
-        <div className="right">
+        <div className="hero_right">
           <img src="./images/man.png" alt="Man Picture" />
         </div>
       </div>

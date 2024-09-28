@@ -70,6 +70,7 @@ th {
 }
 
 tr {
+  cursor: pointer;
   border-bottom: 1px solid #f1f1f1;
 }
 
