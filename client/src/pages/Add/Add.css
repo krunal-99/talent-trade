@@ -104,4 +104,11 @@
   .add_container h1 {
     font-size: 24px;
   }
+
+  .add_left {
+    order: 2;
+  }
+  .add_right {
+    order: 1;
+  }
 }
