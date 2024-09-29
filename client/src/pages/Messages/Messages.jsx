@@ -1,5 +1,6 @@
 import React from "react";
 import "./Messages.css";
+import { Link } from "react-router-dom";
 const Messages = () => {
   const currentUser = {
     id: 1,
@@ -16,15 +17,32 @@ const Messages = () => {
           <h1>Messages</h1>
         </div>
         <table>
-          <tr>
+          <tr className="active">
             <th>Buyer</th>
             <th>Last Message</th>
             <th>Date</th>
             <th>Action</th>
           </tr>
-          <tr>
+          <tr className="active">
             <td> Krunal Pokar</td>
-            <td>{message.substring(0, 100)}...</td>
+            <td>
+              <Link to="/message/123" className="link">
+                {message.substring(0, 100)}...
+              </Link>
+            </td>
+            <td>1 Day Ago</td>
+            <td>
+              <button>Mark As Read</button>
+            </td>
+          </tr>
+
+          <tr className="active">
+            <td> Krunal Pokar</td>
+            <td>
+              <Link to="/message/123" className="link">
+                {message.substring(0, 100)}...
+              </Link>
+            </td>
             <td>1 Day Ago</td>
             <td>
               <button>Mark As Read</button>
@@ -33,7 +51,11 @@ const Messages = () => {
 
           <tr>
             <td> Krunal Pokar</td>
-            <td>{message.substring(0, 100)}...</td>
+            <td>
+              <Link to="/message/123" className="link">
+                {message.substring(0, 100)}...
+              </Link>
+            </td>
             <td>1 Day Ago</td>
             <td>
               <button>Mark As Read</button>
@@ -42,56 +64,52 @@ const Messages = () => {
 
           <tr>
             <td> Krunal Pokar</td>
-            <td>{message.substring(0, 100)}...</td>
-            <td>1 Day Ago</td>
             <td>
-              <button>Mark As Read</button>
+              <Link to="/message/123" className="link">
+                {message.substring(0, 100)}...
+              </Link>
             </td>
+            <td>1 Day Ago</td>
           </tr>
 
           <tr>
             <td> Krunal Pokar</td>
-            <td>{message.substring(0, 100)}...</td>
-            <td>1 Day Ago</td>
             <td>
-              <button>Mark As Read</button>
+              <Link to="/message/123" className="link">
+                {message.substring(0, 100)}...
+              </Link>
             </td>
+            <td>1 Day Ago</td>
           </tr>
 
           <tr>
             <td> Krunal Pokar</td>
-            <td>{message.substring(0, 100)}...</td>
-            <td>1 Day Ago</td>
             <td>
-              <button>Mark As Read</button>
+              <Link to="/message/123" className="link">
+                {message.substring(0, 100)}...
+              </Link>
             </td>
+            <td>1 Day Ago</td>
           </tr>
 
           <tr>
             <td> Krunal Pokar</td>
-            <td>{message.substring(0, 100)}...</td>
-            <td>1 Day Ago</td>
             <td>
-              <button>Mark As Read</button>
+              <Link to="/message/123" className="link">
+                {message.substring(0, 100)}...
+              </Link>
             </td>
+            <td>1 Day Ago</td>
           </tr>
 
           <tr>
             <td> Krunal Pokar</td>
-            <td>{message.substring(0, 100)}...</td>
-            <td>1 Day Ago</td>
             <td>
-              <button>Mark As Read</button>
+              <Link to="/message/123" className="link">
+                {message.substring(0, 100)}...
+              </Link>
             </td>
-          </tr>
-
-          <tr>
-            <td> Krunal Pokar</td>
-            <td>{message.substring(0, 100)}...</td>
             <td>1 Day Ago</td>
-            <td>
-              <button>Mark As Read</button>
-            </td>
           </tr>
         </table>
       </div>

@@ -14,7 +14,7 @@
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   padding: 30px;
-  overflow-x: auto; /* Allow horizontal scrolling on smaller screens */
+  overflow-x: auto;
 }
 
 .orders_title {
@@ -22,7 +22,7 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  flex-wrap: wrap;
 }
 
 .orders_title h1 {
@@ -78,19 +78,18 @@ td img.gig-img:hover {
   transform: scale(1.05);
 }
 
-td img.message {
+td img.order_message {
   width: 28px;
   cursor: pointer;
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-td img.message:hover {
+td img.order_message:hover {
   transform: scale(1.2);
   filter: drop-shadow(0 0 6px rgba(0, 123, 255, 0.5));
   border-radius: 50%;
 }
 
-/* Responsive Styles */
 @media (max-width: 768px) {
   .orders_container {
     padding: 20px;
@@ -117,7 +116,7 @@ td img.message:hover {
     height: 30px;
   }
 
-  td img.message {
+  td img.order_message {
     width: 24px;
   }
 }
@@ -138,7 +137,7 @@ td img.message:hover {
     height: 25px;
   }
 
-  td img.message {
+  td img.order_message {
     width: 20px;
   }
 }
