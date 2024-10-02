@@ -1,0 +1,162 @@
+.register {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f4f4f9;
+  padding: 20px;
+}
+
+.register form {
+  width: 960px;
+  display: flex;
+  gap: 60px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  animation: fadeIn 0.8s ease;
+}
+
+.register h1 {
+  color: #333;
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+.register_left,
+.register_right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.register_left input,
+.register_right input,
+.register_left textarea,
+.register_right textarea {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 16px;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.3s ease;
+}
+
+.register_left input:focus,
+.register_right input:focus,
+.register_left textarea:focus,
+.register_right textarea:focus {
+  border-color: #1dbf73;
+  box-shadow: 0 0 5px rgba(29, 191, 115, 0.3);
+}
+
+.register_left label,
+.register_right label {
+  color: #666;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+}
+
+.register_left button {
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  background-color: #1dbf73;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.register_left button:hover {
+  background-color: #17a864;
+  box-shadow: 0 5px 15px rgba(29, 191, 115, 0.3);
+}
+
+.register_toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.register_switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.register_switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.register_slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 24px;
+}
+
+.register_slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .register_slider {
+  background-color: #1dbf73;
+}
+
+input:checked + .register_slider:before {
+  transform: translateX(26px);
+}
+
+@media (max-width: 768px) {
+  .register form {
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+  }
+
+  .register_left,
+  .register_right {
+    gap: 20px;
+  }
+  .register_right {
+    order: 1;
+  }
+
+  .register_left {
+    order: 2;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -9,11 +9,13 @@ import messageRoute from "./routes/message.route.js";
 import gigRoute from "./routes/gig.route.js";
 import conversationRoute from "./routes/conversation.route.js";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 
 const app = express();
 dotenv.config();
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 
 const connectDB = async () => {
   try {
@@ -39,7 +41,7 @@ app.use((err, req, res, next) => {
   res.status(errorStatus).send(errorMessage);
 });
 
-app.listen(6000, () => {
+app.listen(5000, () => {
   connectDB();
-  console.log("Server is running at port 6000");
+  console.log("Server is running at port 5000");
 });

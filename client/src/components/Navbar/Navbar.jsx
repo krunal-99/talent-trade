@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Navbar.css";
+import newRequest from "../../utils/newRequest";
 const Navbar = () => {
   const [active, setActive] = useState(false);
   const [open, setOpen] = useState(false);
@@ -19,10 +20,18 @@ const Navbar = () => {
     };
   }, []);
 
-  const currentUser = {
-    id: 1,
-    username: "Krunal Pokar",
-    isFreelancer: true,
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await newRequest.post("/auth/logout");
+      localStorage.setItem("currentUser", null);
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <>
@@ -74,10 +83,17 @@ const Navbar = () => {
             <Link to="/login" className="link">
               Sign in
             </Link>
-            {!currentUser && <button>Join</button>}
+            {!currentUser && (
+              <>
+                <Link className="link" to="/register">
+                  <button>Join</button>
+                </Link>
+              </>
+            )}
+
             {currentUser && (
               <div className="user flex" onClick={() => setOpen(!open)}>
-                <img src="./public/images/IMG_0501-02-01.jpeg" alt="" />
+                <img src={currentUser.img || "images/noavatar.jpg"} alt="" />
                 <span className="link">{currentUser?.username}</span>
                 {open && (
                   <div className="options flex">
@@ -97,7 +113,7 @@ const Navbar = () => {
                     <Link className="link" to="/messages">
                       Messages
                     </Link>
-                    <Link className="link" to="/">
+                    <Link className="link" onClick={handleLogout}>
                       Logout
                     </Link>
                   </div>
