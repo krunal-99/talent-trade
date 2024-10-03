@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-// import upload from "../../utils/upload";
+import upload from "../../utils/upload";
 import "./Register.css";
-// import newRequest from "../../utils/newRequest";
+import newRequest from "../../utils/newRequest";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
@@ -24,30 +24,30 @@ const Register = () => {
     });
   };
 
-  // const handleSeller = (e) => {
-  //   setUser((prev) => {
-  //     return { ...prev, isSeller: e.target.checked };
-  //   });
-  // };
+  const handleSeller = (e) => {
+    setUser((prev) => {
+      return { ...prev, isSeller: e.target.checked };
+    });
+  };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  //   const url = await upload(file);
-  //   try {
-  //     await newRequest.post("/auth/register", {
-  //       ...user,
-  //       img: url,
-  //     });
-  //     navigate("/");
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+    const url = await upload(file);
+    try {
+      await newRequest.post("/auth/register", {
+        ...user,
+        img: url,
+      });
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className="register">
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="register_left">
           <h1>Create A New Account</h1>
           <label htmlFor="username">Username</label>
@@ -87,7 +87,7 @@ const Register = () => {
           <div className="register_toggle">
             <label htmlFor="">Activate the seller account</label>
             <label className="register_switch">
-              <input type="checkbox" /* onChange={handleSeller} */ />
+              <input type="checkbox" onChange={handleSeller} />
               <span className="register_slider register_round"></span>
             </label>
           </div>
