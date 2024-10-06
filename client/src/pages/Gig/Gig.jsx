@@ -1,12 +1,24 @@
 import React from "react";
 import "./Gig.css";
 import Slider from "../../components/Slider/Slider";
+import { useQuery } from "@tanstack/react-query";
+import newRequest from "../../utils/newRequest";
+import { useParams } from "react-router-dom";
+
 const Gig = () => {
+  const { id } = useParams();
+  const { isLoading, error, data, refetch } = useQuery({
+    queryKey: ["gig"],
+    queryFn: () =>
+      newRequest.get(`/gigs/single/${id}`).then((res) => {
+        return res.data;
+      }),
+  });
   return (
     <div className="gig">
       <div className="gig_container">
         <div className="gig_left">
-          <h1>Gig Title</h1>
+          <h1>${data.title}</h1>
           <div className="user_profile">
             <img src="/images/man.png" className="profile_picture" />
             <span>Krunal Pokar</span>
