@@ -4,180 +4,145 @@ import Slider from "../../components/Slider/Slider";
 import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import { useParams } from "react-router-dom";
+import Reviews from "../../components/Reviews/Reviews";
 
 const Gig = () => {
   const { id } = useParams();
-  const { isLoading, error, data, refetch } = useQuery({
-    queryKey: ["gig"],
-    queryFn: () =>
-      newRequest.get(`/gigs/single/${id}`).then((res) => {
-        return res.data;
-      }),
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["gig", id],
+    queryFn: () => newRequest.get(`/gigs/single/${id}`).then((res) => res.data),
   });
+
+  const {
+    isLoading: isLoadingUser,
+    error: errorUser,
+    data: dataUser,
+  } = useQuery({
+    queryKey: ["user", id],
+    queryFn: () =>
+      newRequest.get(`/users/${data.userId}`).then((res) => res.data),
+  });
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  const starCount = Math.round(
+    data.totalStars && data.starNumber ? data.totalStars / data.starNumber : 0
+  );
+
+  const starsArray = starCount > 0 ? Array(starCount).fill() : [];
+
   return (
     <div className="gig">
       <div className="gig_container">
         <div className="gig_left">
-          <h1>${data.title}</h1>
-          <div className="user_profile">
-            <img src="/images/man.png" className="profile_picture" />
-            <span>Krunal Pokar</span>
-            <div className="gig_stars">
-              <img src="/images/star.png" alt="" />
-              <img src="/images/star.png" alt="" />
-              <img src="/images/star.png" alt="" />
-              <img src="/images/star.png" alt="" />
-              <img src="/images/star.png" alt="" />
-              <span>5</span>
+          <h1>{data.title}</h1>
+          {isLoadingUser ? (
+            "Loading"
+          ) : errorUser ? (
+            "Something Went Wrong..!!"
+          ) : (
+            <div className="user_profile">
+              <img
+                src={dataUser.img || "./images/noavater.jpg"}
+                className="profile_picture"
+                alt="Profile"
+              />
+              <span>{dataUser.username || "Krunal Pokar"}</span>
+              <div className="gig_stars">
+                {starsArray.map((_, i) => (
+                  <img src="/images/star.png" alt="star" key={i} />
+                ))}
+                <span>{starCount}</span>
+              </div>
             </div>
-          </div>
-          <Slider className="slider" />
+          )}
+          <Slider className="slider" data={data} />
           <h2>About This Gig</h2>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet
-            fugiat iure illo quas sunt aperiam minus at unde aliquam, tenetur
-            iusto repudiandae voluptatum? Totam cum iure incidunt perspiciatis
-            repellendus eveniet atque quaerat. Officiis possimus amet molestiae
-            aliquam illo alias! Neque placeat repellat laborum laudantium error
-            perspiciatis quisquam rem. Perferendis, quas, est exercitationem,
-            distinctio inventore fugit corporis id obcaecati ab minus eius?
-            Atque nam recusandae perspiciatis, doloribus inventore iste commodi
-            qui tempora nostrum nisi minus quasi nemo quae, tenetur officiis in
-            odit, ipsum debitis illo magnam? Quidem reprehenderit expedita
-            consequuntur, earum tempore voluptatibus consectetur eveniet, hic
-            rerum amet, quam et dolore.
-          </p>
-          <div className="gig_seller">
-            <h2>About The Seller</h2>
-            <div className="user_seller">
-              <img src="/images/man.png" alt="" />
-              <div className="seller_info">
-                <span>Krunal Pokar</span>
-                <div className="gig_stars">
-                  <img src="/images/star.png" alt="" />
-                  <img src="/images/star.png" alt="" />
-                  <img src="/images/star.png" alt="" />
-                  <img src="/images/star.png" alt="" />
-                  <img src="/images/star.png" alt="" />
-                  <span>5</span>
-                </div>
-                <button>Contact Me</button>
-              </div>
-            </div>
-            <div className="box">
-              <div className="box_items">
-                <div className="box_item">
-                  <span className="title">From</span>
-                  <span className="desc">India</span>
-                </div>
-                <div className="box_item">
-                  <span className="title">Member since</span>
-                  <span className="desc">Aug 2024</span>
-                </div>
-                <div className="box_item">
-                  <span className="title">Avg. response time</span>
-                  <span className="desc">4 hours</span>
-                </div>
-                <div className="box_item">
-                  <span className="title">Last Delivery</span>
-                  <span className="desc">1 day</span>
-                </div>
-                <div className="box_item">
-                  <span className="title">Languages</span>
-                  <span className="desc">English</span>
+          <p>{data.desc || "No description available"}</p>
+          {isLoadingUser ? (
+            "Loading"
+          ) : errorUser ? (
+            "Something Went Wrong..!!"
+          ) : (
+            <div className="gig_seller">
+              <h2>About The Seller</h2>
+              <div className="user_seller">
+                <img src={dataUser.img || "/images/noavatar.jpg"} alt="" />
+                <div className="seller_info">
+                  <span>{dataUser.username || "Krunal Pokar"}</span>
+                  {!isNaN(data.totalStars / data.starNumber) && (
+                    <div className="gig_stars">
+                      {starsArray.map((_, i) => (
+                        <img src="/images/star.png" alt="star" key={i} />
+                      ))}
+                      <span>{starCount}</span>
+                    </div>
+                  )}
+                  <button>Contact Me</button>
                 </div>
               </div>
-              <hr />
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Nostrum deleniti sint expedita architecto sunt, quasi quod quo
-                non eligendi sed nemo quisquam voluptates quae dolorem, commodi
-                enim, explicabo amet ea maiores eveniet rem alias harum
-                accusantium quibusdam. Tempore debitis eius dignissimos nostrum
-                quo doloribus perspiciatis rem in! Corrupti, natus consequuntur.
-              </p>
-            </div>
-          </div>
-          <div className="reviews">
-            <h2>Reviews</h2>
-            <div className="review_user">
-              <img src="/images/man.png" alt="" />
-              <div className="review_info">
-                <span>Krunal Pokar</span>
-                <div className="review_country">
-                  <img
-                    src="https://wallpaperaccess.com/full/2027791.png"
-                    alt=""
-                  />
-                  <span>India</span>
+              <div className="box">
+                <div className="box_items">
+                  <div className="box_item">
+                    <span className="title">From</span>
+                    <span className="desc">{dataUser.country || "India"}</span>
+                  </div>
+                  <div className="box_item">
+                    <span className="title">Member since</span>
+                    <span className="desc">Aug 2022</span>
+                  </div>
+                  <div className="box_item">
+                    <span className="title">Avg. response time</span>
+                    <span className="desc">4 hours</span>
+                  </div>
+                  <div className="box_item">
+                    <span className="title">Last delivery</span>
+                    <span className="desc">1 day</span>
+                  </div>
+                  <div className="box_item">
+                    <span className="title">Languages</span>
+                    <span className="desc">English</span>
+                  </div>
                 </div>
+                <hr />
+                <p>{dataUser.desc || "No seller description available"}</p>
               </div>
             </div>
-            <div className="gig_stars">
-              <img src="/images/star.png" alt="" />
-              <img src="/images/star.png" alt="" />
-              <img src="/images/star.png" alt="" />
-              <img src="/images/star.png" alt="" />
-              <img src="/images/star.png" alt="" />
-              <span>5</span>
-            </div>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil
-              explicabo quam sit voluptatem vero eos possimus mollitia
-              asperiores. Ut molestiae repudiandae veritatis praesentium rerum
-              fugiat, in cum earum quis tempore minima nostrum repellat
-              exercitationem accusamus quisquam deserunt quae amet nihil
-              accusantium maxime? Omnis eos, illum id soluta quo nulla ratione
-              eum voluptate facilis. Maxime, nihil incidunt odio quis magnam
-              animi similique nostrum laborum quia rem vel omnis! Tenetur
-              sapiente veritatis consequuntur recusandae libero aliquid
-              accusamus?
-            </p>
-            <div className="helpful">
-              <span>Helpful?</span>
-              <img src="/images/like.png" alt="" />
-              <span>Yes</span>
-              <img src="/images/dislike.png" alt="" />
-              <span>No</span>
-            </div>
-          </div>
+          )}
+          <Reviews gigId={id} />
         </div>
         <div className="gig_right">
           <div className="gig_price">
-            <h3>1 AI Generated Image</h3>
-            <h2>Rs. 10000</h2>
+            <h3>{data.shortTitle || "1 AI Generated Image"}</h3>
+            <h2>Rs. {data.price || "10000"}</h2>
           </div>
           <p>
-            I will create a unique high quality AI generated image based on a
-            description that you give me.
+            {data.shortDesc ||
+              "I will create a unique high-quality AI generated image based on a description that you give me."}
           </p>
           <div className="details">
             <div className="details_item">
               <img src="/images/clock.png" alt="" />
-              <span>2 days Delivery</span>
+              <span>{data.deliveryTime} days Delivery</span>
             </div>
             <div className="details_item">
               <img src="/images/recycle.png" alt="" />
-              <span>3 Revisions</span>
+              <span>{data.revisionNumber} Revisions</span>
             </div>
           </div>
           <div className="details_features">
-            <div className="feature_item">
-              <img src="/images/greencheck.png" alt="" />
-              <span>Prompt Writing</span>
-            </div>
-            <div className="feature_item">
-              <img src="/images/greencheck.png" alt="" />
-              <span>Artwork Delivery</span>
-            </div>
-            <div className="feature_item">
-              <img src="/images/greencheck.png" alt="" />
-              <span>Image upscaling</span>
-            </div>
-            <div className="feature_item">
-              <img src="/images/greencheck.png" alt="" />
-              <span>Additional Design</span>
-            </div>
+            {data.features.map((feature) => (
+              <div className="feature_item" key={feature}>
+                <img src="/images/greencheck.png" alt="" />
+                <span>{feature}</span>
+              </div>
+            ))}
           </div>
           <button>Continue</button>
         </div>
@@ -185,4 +150,5 @@ const Gig = () => {
     </div>
   );
 };
+
 export default Gig;
