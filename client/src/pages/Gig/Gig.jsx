@@ -3,7 +3,7 @@ import "./Gig.css";
 import Slider from "../../components/Slider/Slider";
 import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Reviews from "../../components/Reviews/Reviews";
 
 const Gig = () => {
@@ -13,14 +13,16 @@ const Gig = () => {
     queryFn: () => newRequest.get(`/gigs/single/${id}`).then((res) => res.data),
   });
 
+  const userId = data?.userId;
+
   const {
     isLoading: isLoadingUser,
     error: errorUser,
     data: dataUser,
   } = useQuery({
     queryKey: ["user", id],
-    queryFn: () =>
-      newRequest.get(`/users/${data.userId}`).then((res) => res.data),
+    queryFn: () => newRequest.get(`/users/${userId}`).then((res) => res.data),
+    enabled: !!userId,
   });
 
   if (isLoading) {
@@ -144,7 +146,9 @@ const Gig = () => {
               </div>
             ))}
           </div>
-          <button>Continue</button>
+          <Link to={`/pay/${id}`}>
+            <button>Continue</button>
+          </Link>
         </div>
       </div>
     </div>
